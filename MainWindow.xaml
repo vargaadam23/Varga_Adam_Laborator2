@@ -5,69 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Varga_Adam_Laborator2"
         mc:Ignorable="d"
-        Title="Virtual Doughnuts Factory" Height="560" Width="836" AutomationProperties.Name="frmMain" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        Title="Virtual Doughnuts Factory" Height="560" Width="836" AutomationProperties.Name="frmMain" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="Window_Loaded">
     <Grid Margin="0,0,0,5">
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
 Width="137">
             <MenuItem Header="File">
-                <MenuItem Header="Exit"/>
+                <MenuItem Header="Exit" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="_Doughnuts">
                 <MenuItem Header="Make">
                     <MenuItem Header="Raised">
-                        <MenuItem x:Name="glazedMenuItem" Header="Glazed"/>
-                        <MenuItem x:Name="sugarMenuItem" Header="Sugar"/>
+                        <MenuItem x:Name="glazedToolStripMenuItem" Header="Glazed"
+IsCheckable="True" AutomationProperties.Name="glazedToolStripMenuItem" Click="glazedToolStripMenuItem_Click"/>
+                        <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar"
+IsCheckable="True" AutomationProperties.Name="sugarToolStripMenuItem" Click="sugarToolStripMenuItem_Click"/>
                     </MenuItem>
                     <MenuItem Header="Filled"/>
                 </MenuItem>
+                
+                <MenuItem x:Name="mnuStop" Header="Stop" Click="mnuStop_Click"/>
             </MenuItem>
         </Menu>
-        <Label Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Center" Margin="0,55,0,0" VerticalAlignment="Top" AutomationProperties.Name="lblTitle" FontSize="24" FontWeight="Bold"/>
-        <GroupBox Header="Raised" Margin="159,121,458,294" AutomationProperties.Name="gbRaised" AutomationProperties.IsColumnHeader="True" FontWeight="Bold">
+        <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Center" Margin="0,55,0,0" VerticalAlignment="Top" AutomationProperties.Name="lblTitle" FontSize="24" FontWeight="Bold"/>
+        <GroupBox x:Name="gbRaised" Header="Raised" Margin="159,121,458,294" AutomationProperties.Name="gbRaised" AutomationProperties.IsColumnHeader="True" FontWeight="Bold">
             <Canvas HorizontalAlignment="Center" Width="207">
-                <TextBox Canvas.Left="91" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtGlazedRaised" IsReadOnly="True"/>
-                <Label Content="Glazed" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblGlazedRaised" Canvas.Left="-158" Canvas.Top="-137"/>
+                <TextBox x:Name="txtGlazedRaised" Canvas.Left="91" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtGlazedRaised" IsReadOnly="True"/>
+                <Label x:Name="lblGlazedRaised" Content="Glazed" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblGlazedRaised" Canvas.Left="-158" Canvas.Top="-137"/>
 
-                <TextBox Canvas.Left="91" Canvas.Top="52" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtSugarRaised" IsReadOnly="True"/>
-                <Label Content="Sugar" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblSugarRaised" Canvas.Left="-155" Canvas.Top="-98"/>
+                <TextBox x:Name="txtSugarRaised" Canvas.Left="91" Canvas.Top="52" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtSugarRaised" IsReadOnly="True"/>
+                <Label x:Name="lblSugarRaised" Content="Sugar" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblSugarRaised" Canvas.Left="-155" Canvas.Top="-98"/>
 
             </Canvas>
         </GroupBox>
-        <GroupBox Header="Filled" Margin="431,111,186,253" AutomationProperties.Name="gbFilled" AutomationProperties.IsColumnHeader="True" FontWeight="Bold">
+        <GroupBox x:Name="gbFilled" Header="Filled" Margin="431,111,186,253" AutomationProperties.Name="gbFilled" AutomationProperties.IsColumnHeader="True" FontWeight="Bold">
             <Canvas HorizontalAlignment="Center" Width="207">
-                <TextBox Canvas.Left="91" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtLemonFilled" IsReadOnly="True"/>
-                <Label Content="Lemon" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblLemonFilled" Canvas.Left="-158" Canvas.Top="-137"/>
+                <TextBox x:Name="txtLemonFilled" Canvas.Left="91" Canvas.Top="10" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtLemonFilled" IsReadOnly="True"/>
+                <Label x:Name="lblLemonFilled" Content="Lemon" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblLemonFilled" Canvas.Left="-158" Canvas.Top="-137"/>
 
-                <TextBox Canvas.Left="91" Canvas.Top="52" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtChocolateFilled" IsReadOnly="True"/>
-                <Label Content="Chocolate" Height="26" Margin="173,145,0,0" Width="85" AutomationProperties.Name="lblChocolateFilled" Canvas.Left="-163" Canvas.Top="-97"/>
+                <TextBox x:Name="txtChocolateFilled" Canvas.Left="91" Canvas.Top="52" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtChocolateFilled" IsReadOnly="True"/>
+                <Label x:Name="lblChocolateFilled" Content="Chocolate" Height="26" Margin="173,145,0,0" Width="85" AutomationProperties.Name="lblChocolateFilled" Canvas.Left="-163" Canvas.Top="-97"/>
 
-                <TextBox Canvas.Left="91" Canvas.Top="95" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtVanillaFilled" IsReadOnly="True"/>
-                <Label Content="Vanilla" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblVanillaFilled" Canvas.Left="-155" Canvas.Top="-55"/>
+                <TextBox x:Name="txtVanillaFilled" Canvas.Left="91" Canvas.Top="95" Text="0" TextWrapping="Wrap" Width="106" Height="21" AutomationProperties.Name="txtVanillaFilled" IsReadOnly="True"/>
+                <Label x:Name="lblVanillaFilled" Content="Vanilla" Height="26" Margin="173,145,0,0" Width="64" AutomationProperties.Name="lblVanillaFilled" Canvas.Left="-155" Canvas.Top="-55"/>
 
             </Canvas>
         </GroupBox>
-        <GroupBox Header="Current Sale" Margin="159,291,75,28" AutomationProperties.Name="gbCurrentSale" FontWeight="Bold">
+        <GroupBox x:Name="gbCurrentSale" Header="Current Sale" Margin="159,291,75,28" AutomationProperties.Name="gbCurrentSale" FontWeight="Bold">
             <Canvas>
-                <Label Content="Quantity" Canvas.Left="10" Canvas.Top="10" AutomationProperties.Name="lblQuantity"/>
-                <Label Content="Total" Canvas.Left="276" Canvas.Top="128" AutomationProperties.Name="lblTotal"/>
-                <Label Content="Type" Canvas.Left="146" Canvas.Top="10" AutomationProperties.Name="lblType"/>
-                <Label Content="Price" Canvas.Left="321" Canvas.Top="10" AutomationProperties.Name="lblPrice"/>
+                <Label x:Name="lblQuantity" Content="Quantity" Canvas.Left="10" Canvas.Top="10" AutomationProperties.Name="lblQuantity"/>
+                <Label x:Name="lblTotal" Content="Total" Canvas.Left="276" Canvas.Top="128" AutomationProperties.Name="lblTotal"/>
+                <Label x:Name="lblType" Content="Type" Canvas.Left="146" Canvas.Top="10" AutomationProperties.Name="lblType"/>
+                <Label x:Name="lblPrice" Content="Price" Canvas.Left="321" Canvas.Top="10" AutomationProperties.Name="lblPrice"/>
 
 
-                <TextBox Canvas.Left="74" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="58" AutomationProperties.Name="txtQuantity"/>
-                <TextBox Canvas.Left="364" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="58" AutomationProperties.Name="txtPrice" IsReadOnly="True"/>
-                <TextBox Canvas.Left="324" Canvas.Top="132" Text="0" TextWrapping="Wrap" Width="98" AutomationProperties.Name="txtTotal" IsReadOnly="True"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="74" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="58" AutomationProperties.Name="txtQuantity" KeyUp="TextBox_KeyUp"/>
+                <TextBox x:Name="txtPrice" Canvas.Left="364" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="58" AutomationProperties.Name="txtPrice" IsReadOnly="True"/>
+                <TextBox x:Name="txtTotal" Canvas.Left="324" Canvas.Top="132" Text="0" TextWrapping="Wrap" Width="98" AutomationProperties.Name="txtTotal" IsReadOnly="True"/>
 
 
-                <ComboBox Canvas.Left="185" Canvas.Top="14" Width="129" AutomationProperties.Name="cmbType"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="185" Canvas.Top="14" Width="129" AutomationProperties.Name="cmbType"/>
 
 
                 <ListBox Height="75" Width="412" Canvas.Left="10" Canvas.Top="48"/>
 
 
-                <Button Content="Add To Sale" Height="23" Canvas.Left="454" Canvas.Top="23" Width="93" AutomationProperties.Name="btnAddToSale"/>
-                <Button Content="Remove Item" Height="23" Canvas.Left="454" Canvas.Top="51" Width="93" AutomationProperties.Name="btnRemoveItem"/>
-                <Button Content="Checkout" Height="35" Canvas.Left="454" Canvas.Top="115" Width="93" AutomationProperties.Name="btnCheckout"/>
+                <Button x:Name="btnAddToSale" Content="Add To Sale" Height="23" Canvas.Left="454" Canvas.Top="23" Width="93" AutomationProperties.Name="btnAddToSale"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Item" Height="23" Canvas.Left="454" Canvas.Top="51" Width="93" AutomationProperties.Name="btnRemoveItem"/>
+                <Button x:Name="btnCheckout" Content="Checkout" Height="35" Canvas.Left="454" Canvas.Top="115" Width="93" AutomationProperties.Name="btnCheckout"/>
 
 
             </Canvas>
