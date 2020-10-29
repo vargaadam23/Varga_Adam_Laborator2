@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Varga_Adam_Laborator2"
+        xmlns:CustomComenzi="clr-namespace:Varga_Adam_Laborator2.CustomComenzi"
         mc:Ignorable="d"
         Title="Virtual Doughnuts Factory" Height="560" Width="836" AutomationProperties.Name="frmMain" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="Window_Loaded">
-    <Grid Margin="0,0,0,5">
+    <Grid Margin="0,0,0,5" MenuItem.Click="FilledItemsShow_Click">
         <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
 Width="137">
             <MenuItem Header="File">
@@ -20,10 +21,17 @@ IsCheckable="True" AutomationProperties.Name="glazedToolStripMenuItem" Click="gl
                         <MenuItem x:Name="sugarToolStripMenuItem" Header="Sugar"
 IsCheckable="True" AutomationProperties.Name="sugarToolStripMenuItem" Click="sugarToolStripMenuItem_Click"/>
                     </MenuItem>
-                    <MenuItem Header="Filled"/>
+                    <MenuItem Header="Filled" Click="FilledItems_Click" >
+                        <MenuItem x:Name="lemonFilledMenuItem" Header="Lemon" IsCheckable="True"/>
+                        <MenuItem x:Name="chocolateFilledMenuItem" Header="Chocolate" IsCheckable="True"/>
+                        <MenuItem x:Name="vanillaFilledMenuItem" Header="Vanilla" IsCheckable="True"/>
+                    </MenuItem>
+
+                    <MenuItem x:Name="mnuStop" Header="Stop" Click="mnuStop_Click" InputGestureText="Ctrl+S" Command="CustomComenzi:StopCommand.Launch"/>
+                    <MenuItem Header="Inventory"  Command="ApplicationCommands.Print" >
+
                 </MenuItem>
-                
-                <MenuItem x:Name="mnuStop" Header="Stop" Click="mnuStop_Click"/>
+            </MenuItem>
             </MenuItem>
         </Menu>
         <Label x:Name="lblTitle" Content="Doughnuts - Bake &amp; Sale" HorizontalAlignment="Center" Margin="0,55,0,0" VerticalAlignment="Top" AutomationProperties.Name="lblTitle" FontSize="24" FontWeight="Bold"/>
@@ -63,15 +71,15 @@ IsCheckable="True" AutomationProperties.Name="sugarToolStripMenuItem" Click="sug
                 <TextBox x:Name="txtTotal" Canvas.Left="324" Canvas.Top="132" Text="0" TextWrapping="Wrap" Width="98" AutomationProperties.Name="txtTotal" IsReadOnly="True"/>
 
 
-                <ComboBox x:Name="cmbType" Canvas.Left="185" Canvas.Top="14" Width="129" AutomationProperties.Name="cmbType"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="185" Canvas.Top="14" Width="129" AutomationProperties.Name="cmbType" SelectionChanged="cmbType_SelectionChanged"/>
 
 
-                <ListBox Height="75" Width="412" Canvas.Left="10" Canvas.Top="48"/>
+                <ListBox x:Name="lstSale" Height="75" Width="412" Canvas.Left="10" Canvas.Top="48"/>
 
 
-                <Button x:Name="btnAddToSale" Content="Add To Sale" Height="23" Canvas.Left="454" Canvas.Top="23" Width="93" AutomationProperties.Name="btnAddToSale"/>
-                <Button x:Name="btnRemoveItem" Content="Remove Item" Height="23" Canvas.Left="454" Canvas.Top="51" Width="93" AutomationProperties.Name="btnRemoveItem"/>
-                <Button x:Name="btnCheckout" Content="Checkout" Height="35" Canvas.Left="454" Canvas.Top="115" Width="93" AutomationProperties.Name="btnCheckout"/>
+                <Button x:Name="btnAddToSale" Content="Add To Sale" Height="23" Canvas.Left="454" Canvas.Top="23" Width="93" AutomationProperties.Name="btnAddToSale" Click="btnAddToSale_Click"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Item" Height="23" Canvas.Left="454" Canvas.Top="51" Width="93" AutomationProperties.Name="btnRemoveItem" Click="btnRemoveItem_Click"/>
+                <Button x:Name="btnCheckout" Content="Checkout" Height="35" Canvas.Left="454" Canvas.Top="115" Width="93" AutomationProperties.Name="btnCheckout" Click="btnCheckout_Click"/>
 
 
             </Canvas>
